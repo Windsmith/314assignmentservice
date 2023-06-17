@@ -1,3 +1,4 @@
 {
-    "name": "assignments"
+    "name": "assignments",
+    "entryPage": "src/pages/assignment.html"
 }

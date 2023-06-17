@@ -9,13 +9,13 @@
 
 <body class="bg-gray-200">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <div class="min-h-screen">
+    <div>
         <div class="antialiased bg-gray-100 dark-mode:bg-gray-900">
             <div class="w-full text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800">
                 <div x-data="{ open: true }"
                     class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
                     <div class="flex flex-row items-center justify-between p-4">
-                        <a href="./index.html"
+                        <a href="./"
                             class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">ILearn</a>
                         <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
                             @click="open = !open">
@@ -34,7 +34,7 @@
                         <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                             href="#">Subjects</a>
                         <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                            href="./serviceInstall.html">Install Service</a>
+                            href="./serviceInstallx">Install Service</a>
                         <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
                             href="#">Config</a>
                         <a class="px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 md:ml-4 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
@@ -47,10 +47,9 @@
     <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     <script src="https://unpkg.com/alpinejs" defer></script>
 
-    <div class='flex items-center justify-center min-h-screen bg-gray-200'
-        x-data="{ reportsOpenCategory1: false, reportsOpenCategory2: false }">
-        <div class='w-full max-w-lg px-10 py-8 mx-auto bg-white rounded-lg shadow-xl'>
-            <div class='max-w-md mx-auto space-y-6'>
+    <div class="m-10" x-data="{ reportsOpenCategory1: false, reportsOpenCategory2: false }">
+        <div class='w-full px-10 py-8 bg-white rounded-lg shadow-xl'>
+            <div class='mx-auto space-y-6'>
                 <h1 class='text-xl font-bold text-gray-800'>SUBJECT ASSIGNMENTS AND MATERIALS</h1>
                 <p class='text-gray-600'></p>
 
@@ -70,12 +69,12 @@
                     </div>
                 </div>
 
-                <div class="flex p-5 md:p-0 w-full transform transition duration-300 ease-in-out border-b pb-10 bg-gray-100"
-                    x-cloak x-show="reportsOpenCategory1" x-collapse x-collapse.duration.500ms>
+                <div class="flex p-5 md:p-0 w-full transform transition duration-300 ease-in-out border-b pb-10" x-cloak
+                    x-show="reportsOpenCategory1" x-collapse x-collapse.duration.500ms>
                     Assignment
                 </div>
-                <div class="flex p-5 md:p-0 w-full transform transition duration-300 ease-in-out border-b pb-10 bg-gray-100"
-                    x-cloak x-show="reportsOpenCategory1" x-collapse x-collapse.duration.500ms>
+                <div class="flex p-5 md:p-0 w-full transform transition duration-300 ease-in-out border-b pb-10" x-cloak
+                    x-show="reportsOpenCategory1" x-collapse x-collapse.duration.500ms>
                     Study Material
                 </div>
 
@@ -95,12 +94,12 @@
                     </div>
                 </div>
 
-                <div class="flex p-5 md:p-0 w-full transform transition duration-300 ease-in-out border-b pb-10 bg-gray-100"
-                    x-cloak x-show="reportsOpenCategory2" x-collapse x-collapse.duration.500ms>
+                <div class="flex p-5 md:p-0 w-full transform transition duration-300 ease-in-out border-b pb-10" x-cloak
+                    x-show="reportsOpenCategory2" x-collapse x-collapse.duration.500ms>
                     Assignment
                 </div>
-                <div class="flex p-5 md:p-0 w-full transform transition duration-300 ease-in-out border-b pb-10 bg-gray-100"
-                    x-cloak x-show="reportsOpenCategory2" x-collapse x-collapse.duration.500ms>
+                <div class="flex p-5 md:p-0 w-full transform transition duration-300 ease-in-out border-b pb-10" x-cloak
+                    x-show="reportsOpenCategory2" x-collapse x-collapse.duration.500ms>
                     Study Material
                 </div>
             </div>

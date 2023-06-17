@@ -526,6 +526,15 @@ video {
   position: static;
 }
 
+.m-10 {
+  margin: 2.5rem;
+}
+
+.mx-10 {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
 .mx-3 {
   margin-left: 0.75rem;
   margin-right: 0.75rem;
@@ -576,12 +585,21 @@ video {
   width: 100%;
 }
 
-.max-w-lg {
-  max-width: 32rem;
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
-.max-w-md {
-  max-width: 28rem;
+.w-10\/12 {
+  width: 83.333333%;
+}
+
+.w-11\/12 {
+  width: 91.666667%;
+}
+
+.w-screen {
+  width: 100vw;
 }
 
 .max-w-screen-xl {

@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,15 +44,14 @@
         </div>
     </div>
 
-
     <div class="min-w-screen min-h-screen  bg-gray-200 flex items-center justify-center px-5 py-5">
         <div class="w-full mx-auto m-h rounded-lg bg-white shadow-lg px-10 pt-5 pb-5 text-gray-800"
             style="max-width: 1800px">
             <div class="w-full mx-auto m-h-2 rounded-lg bg-gray-100 shadow-lg  pt-5 pb-5 px-5 text-gray-800"
                 style="max-width: 1700px">
                 <div class="h1 pb-5 px-5" style="font-weight:bold;">Assignment</div>
-                <div class="py-6 px-5" style="font-size: 40px;">Assignment description</div>
-                <div class="py-6 px-5" style="font-size: 40px;">Assignment file download</div>
+                <div id="assignmentDescription" class="py-6 px-5" style="font-size: 40px;">Assignment description</div>
+                <div id="assignmentDownload" class="py-6 px-5" style="font-size: 40px;">Assignment file download</div>
                 <div class="py-6 px-5" style="font-size: 40px;">Submission link <input type="file" id="myFile"
                         name="filename"></div>
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
@@ -62,6 +60,42 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        // Fetching the JSON file
+        fetch('exampleAssignments.json')
+            .then(response => response.json())
+            .then(data => {
+                // Get the assignment data from the JSON
+                const assignments = data.;
+
+                // Select the assignment description and assignment download elements
+                const assignmentDescription = document.getElementById('assignmentDescription');
+                const assignmentDownload = document.getElementById('assignmentDownload');
+
+                // Generate HTML for each assignment
+                assignments.forEach(assignment => {
+                    const assignmentHTML = `
+                        <div class="py-6 px-5" style="font-size: 40px;">
+                            <h2>${assignment.title}</h2>
+                            <p>${assignment.description}</p>
+                            <p>Group assigned: ${assignment['group assigned']}</p>
+                            <p>Due Date: ${assignment.dueDate}</p>
+                        </div>
+                    `;
+                    assignmentDescription.insertAdjacentHTML('beforeend', assignmentHTML);
+                });
+
+                // Generate HTML for the assignment download
+                const downloadHTML = `
+                    <div class="py-6 px-5" style="font-size: 40px;">
+                        <a href="exampleAssignments.json" download>Download Assignments JSON</a>
+                    </div>
+                `;
+                assignmentDownload.innerHTML = downloadHTML;
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
 
 </body>
 

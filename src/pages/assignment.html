@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,57 +45,48 @@
         </div>
     </div>
 
-    <div class="min-w-screen min-h-screen  bg-gray-200 flex items-center justify-center px-5 py-5">
+    <div class="min-w-screen bg-gray-200 flex items-center justify-center px-5 py-5">
         <div class="w-full mx-auto m-h rounded-lg bg-white shadow-lg px-10 pt-5 pb-5 text-gray-800"
             style="max-width: 1800px">
-            <div class="w-full mx-auto m-h-2 rounded-lg bg-gray-100 shadow-lg  pt-5 pb-5 px-5 text-gray-800"
+            <div class="w-full mx-auto m-h-2 rounded-lg bg-gray-100 shadow-lg py-5 px-10 text-gray-800"
                 style="max-width: 1700px">
-                <div class="h1 pb-5 px-5" style="font-weight:bold;">Assignment</div>
-                <div id="assignmentDescription" class="py-6 px-5" style="font-size: 40px;">Assignment description</div>
-                <div id="assignmentDownload" class="py-6 px-5" style="font-size: 40px;">Assignment file download</div>
-                <div class="py-6 px-5" style="font-size: 40px;">Submission link <input type="file" id="myFile"
-                        name="filename"></div>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <div id="assignmentTitle" class="text-3xl font-bold"></div>
+                <div id="assignmentDescription" class="text-lg"></div>
+                <div class="my-5">
+                    <div id="assignmentDeadline"></div>
+                    <div>Submission link <input id="fileUpload" type="file"></div>
+                </div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-2"
+                    onclick='submitAssignment()'>
                     Submit
                 </button>
             </div>
         </div>
     </div>
-    
+
     <script>
-        // Fetching the JSON file
-        fetch('exampleAssignments.json')
-            .then(response => response.json())
-            .then(data => {
-                // Get the assignment data from the JSON
-                const assignments = data.;
+        const queryString = window.location.href
+        let parts = queryString.split('/')
+        let id = parts[parts.length - 1]
 
-                // Select the assignment description and assignment download elements
-                const assignmentDescription = document.getElementById('assignmentDescription');
-                const assignmentDownload = document.getElementById('assignmentDownload');
+        // Select the assignment description and assignment download elements
+        const assignmentDescription = document.getElementById('assignmentDescription');
+        const assignmentTitle = document.getElementById('assignmentTitle');
+        const assignmentDeadline = document.getElementById('assignmentDeadline');
 
-                // Generate HTML for each assignment
-                assignments.forEach(assignment => {
-                    const assignmentHTML = `
-                        <div class="py-6 px-5" style="font-size: 40px;">
-                            <h2>${assignment.title}</h2>
-                            <p>${assignment.description}</p>
-                            <p>Group assigned: ${assignment['group assigned']}</p>
-                            <p>Due Date: ${assignment.dueDate}</p>
-                        </div>
-                    `;
-                    assignmentDescription.insertAdjacentHTML('beforeend', assignmentHTML);
-                });
-
-                // Generate HTML for the assignment download
-                const downloadHTML = `
-                    <div class="py-6 px-5" style="font-size: 40px;">
-                        <a href="exampleAssignments.json" download>Download Assignments JSON</a>
-                    </div>
-                `;
-                assignmentDownload.innerHTML = downloadHTML;
+        fetch(`/assignments/assignmentData/${id}`)
+            .then((result) => result.json())
+            .then((data) => {
+                assignmentDescription.innerHTML += data.description;
+                assignmentTitle.innerHTML += data.title;
+                assignmentDeadline.innerHTML += `Due by: ${data.dueDate}`;
             })
-            .catch(error => console.error('Error:', error));
+
+        function submitAssignment() {
+            let upload = document.getElementById('fileUpload')
+            if (upload.files.length != 0) alert("Submitted!")
+            else alert("Upload a file")
+        }
     </script>
 
 </body>
